@@ -7,6 +7,12 @@
 <!-- para aceder a las rutas con blade injectando html: { !! route("about")!!}  -->
 @extends('layouts.app')
 
+
+
+@section('title')
+    welcome
+@endsection
+
 @section('contenido')
 
     <h1>welcome</h1>    
