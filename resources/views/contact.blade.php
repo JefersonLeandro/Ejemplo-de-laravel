@@ -1,13 +1,16 @@
-@extends('layouts.app')
+<x-layouts.plantillaApp 
 
-@section('title','contact') 
+    title="contact" 
+    meta-description="este es el contenido de la descripcion de contact" 
+    
+    >
 
-@section("meta-description","meta-description contact")
-
-
-@section('contenido')
+    {{-- <x-slot name="title">
+       home 
+        poner el title a la pagina
+    </x-slot> --}}
 
     <h1>contact</h1>    
 
-@endsection
+</x-layout>
 

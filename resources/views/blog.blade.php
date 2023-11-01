@@ -1,15 +1,16 @@
-@extends('layouts.app')
+<x-layouts.plantillaApp 
 
+    title="blog" 
+    meta-description="este es el contenido de la descripcion de blog" 
+    
+    >
 
-@section('title','blog') 
-@section("meta-description","meta-description blog")
-
-
-
-
-@section('contenido')
+    {{-- <x-slot name="title">
+       home 
+        poner el title a la pagina
+    </x-slot> --}}
 
     <h1>blog</h1>    
 
-@endsection
+</x-layout>
 
