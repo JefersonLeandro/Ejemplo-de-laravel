@@ -8,10 +8,9 @@
 @extends('layouts.app')
 
 
-
-@section('title')
-    welcome
-@endsection
+{{-- se puede dejar como segundo parametro el valor ya que es solo es texto si fuera html toca dentro del section  --}}
+@section('title','welcome') 
+@section("meta-description","meta-description home")
 
 @section('contenido')
 

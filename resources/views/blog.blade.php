@@ -1,9 +1,10 @@
 @extends('layouts.app')
 
 
-@section('title')
-    blog
-@endsection
+@section('title','blog') 
+@section("meta-description","meta-description blog")
+
+
 
 
 @section('contenido')

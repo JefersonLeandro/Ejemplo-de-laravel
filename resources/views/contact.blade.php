@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
-@section('title')
-    contact
-@endsection
+@section('title','contact') 
+
+@section("meta-description","meta-description contact")
 
 
 @section('contenido')
