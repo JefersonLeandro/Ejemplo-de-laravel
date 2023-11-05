@@ -25,7 +25,7 @@
 
 
     @foreach ($posts as $miPost) 
-        <h3>{{$miPost->nombreJugador}})</h3>
+        <h3>{{$miPost->nombreTitulo}}</h3>
 
     @endforeach
 
