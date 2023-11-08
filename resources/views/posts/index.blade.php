@@ -22,10 +22,12 @@
          podria hacer con php puro echo $miVariable[''] pero permitiria codigo malicioso o script dentro del navegador 
          ya que las etiquetas de blade {{}} no lo permitiran  {{$miPost['title']}}--}}
 
-
+        <a href="{{route("posts.create")}}">crear un nuevo post</a>
 
     @foreach ($posts as $miPost) 
-        <h3>{{$miPost->nombreTitulo}}</h3>
+        {{-- <h3>{{$miPost->nombreTitulo }}</h3>  en la parte del id solamente se le puede pasar la variable $miPost ya que el programa se encarga de de obtener el id por si  --}}
+        <h3><a href="{{route('posts.show',$miPost->id)}}">{{$miPost->nombreTitulo}}</a></h3>
+        
 
     @endforeach
 

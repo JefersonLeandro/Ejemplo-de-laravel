@@ -43,11 +43,14 @@ Route::view("/","welcome")->name("welcome");
 
 
 
-Route::get("/blog",[controladorPost::class,'index'])->name("blog");
 // Route::get("nombre url cualquiera o igual ",[nombreControlador,'nombre del metodo a utlizar'])->name("nombre de toda la ruta");
 // Route::view("/blog","blog",["posts"=>$posts])->name("blog");
 
 
 Route::view("/contact","contact")->name("contact");
 Route::view("/acercaDe","about")->name("about");
+Route::get("/blog",[controladorPost::class,'index'])->name("posts.index");
+// el metodo show es para mostrar los detalles de algo miestran el index es para mostrar un listado
 
+Route::get("/blog/create",[controladorPost::class,'create'])->name("posts.create"); 
+Route::get("/blog/{elId}",[controladorPost::class,'show'])->name("posts.show"); 
