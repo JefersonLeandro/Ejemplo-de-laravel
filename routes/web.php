@@ -54,3 +54,7 @@ Route::get("/blog",[controladorPost::class,'index'])->name("posts.index");
 
 Route::get("/blog/create",[controladorPost::class,'create'])->name("posts.create"); 
 Route::get("/blog/{elId}",[controladorPost::class,'show'])->name("posts.show"); 
+
+
+// Post
+Route::post("/blog",[controladorPost::class,'store'])->name("posts.store"); // el metodo store es para almacenar valores o datos

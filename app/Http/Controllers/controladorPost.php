@@ -48,4 +48,18 @@ class controladorPost extends Controller{
         return view("posts.create");
     }
 
+    public function store(Request $request) {// utilizado para almacenar datos 
+
+
+        // return request(); ver los datos que trae la solicitud
+        // se puede aceder con el nombre del name solamente o con input("name");
+
+        $dato = new Titulo; // eloquen 
+        $dato->nombreTitulo=$request->input("fTitulo");
+        $dato->body= $request->fDescripcion;
+        $dato->save();
+
+        // return $request->input('fTitulo'); 
+
+    }
 }
