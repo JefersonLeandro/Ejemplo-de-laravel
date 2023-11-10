@@ -7,7 +7,13 @@
     <meta  name="descripcion" content="{{$metaDescription ?? 'descripcion por defecto' }}" > 
     <title>{{$title ??''}}</title>
 </head>
-<body>
+<body> 
+
+
+
+
+
+
     {{-- @include('components.layouts.navegacion')  eso de atras es igual a esto :  <x-layouts.navegacion/>--}}
     {{-- @yield('contenido')/ --}}
     {{-- este slot es una variable vacia como si fuera el yield y para aceder a los otros atributos con los names --}}
@@ -15,6 +21,16 @@
     {{-- kebab case para refenciar o acceder  --}}
     {{-- el apuntador de navegacion no lleva nada en este caso se cierra ahi mismo  --}}
     <x-layouts.navegacion/>
+
+    @if (session("estado"))
+    <div class="estado">
+
+        <strong>{{session('estado')}}</strong> 
+
+    </div>
+        
+    @endif
+
     {{$slot}}
 
 

@@ -51,15 +51,34 @@ class controladorPost extends Controller{
     public function store(Request $request) {// utilizado para almacenar datos 
 
 
-        // return request(); ver los datos que trae la solicitud
+        // return request(); ver los datos que trae la solicitud - igualmente imprimir la variable de $request
         // se puede aceder con el nombre del name solamente o con input("name");
 
+        $request->validate([
+
+            "fTitulo"=>['required', 'min:4', 'max:45'] ,  
+            "fDescripcion"=> ['required','min:20', 'max:255']
+            
+        ]);
+        // ],[
+
+        // para modificar un mensaje 'fTitulo.required' =>' un mensaje diferente :attribute'
+
+        // ]);
+
+
         $dato = new Titulo; // eloquen 
-        $dato->nombreTitulo=$request->input("fTitulo");
-        $dato->body= $request->fDescripcion;
+        $dato->nombreTitulo = $request->input("fTitulo");
+        $dato->body = $request->fDescripcion;
         $dato->save();
 
         // return $request->input('fTitulo'); 
+        // para simplificar el codigo y de el mismo resultado con el redirect con route exite un metodo que ya hace el redirecionamiento to_route
+        // return redirect()->route("posts.index"); 
+        
+        session()->flash("estado","-Post creado-");// crear un mensaje o estado de una sola peticion o recargo .
+
+        return to_route("posts.index");// se redirecciona a nueva ruta 
 
     }
 }

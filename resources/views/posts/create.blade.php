@@ -13,13 +13,31 @@
             refrescare el token     --}}
         @csrf 
 
-        <label for="titulo">El titulo</label>
+            <label for="titulo">El titulo</label>
+            <br>
+        @error('fTitulo')
+
+       
+            <small style="color: red;">{{$message}}</small>
         <br>
-        <input type="text" name="fTitulo">
+        <br>
+        @enderror
+            
+     
+
+        <input type="text" name="fTitulo" value="{{ old("fTitulo") }}">
         <br>
         <label for="body" >La descripcion</label>
         <br>
-       <textarea name="fDescripcion" id="" cols="30" rows="10"></textarea>
+
+        @error('fDescripcion')
+                <small style="color: red;  ">{{$message}}</small>
+            <br>
+            <br>
+        @enderror
+
+
+       <textarea name="fDescripcion" id="" cols="30" rows="10">{{old("fDescripcion")}}</textarea>
        <br>
 
         <button type="submit">Enviar</button>

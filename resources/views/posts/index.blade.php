@@ -12,6 +12,9 @@
 
     <h1>blog</h1>    
 
+    
+   
+    <br>
 
     {{-- Mostrar los datos que viene desde el controlador accediendo a la variable del vector
          que los tiene dentro de la url en este caso   posts y acedemos al nombre del valor que queremos mostrar 
