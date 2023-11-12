@@ -11,37 +11,10 @@
         {{-- falsicacion de peticion en sitios cruzados - csrf  este token tiene una duracion de dos 
             horas y volvera a retonar pagina expirada solo hay que volver y recargar el fomulario para 
             refrescare el token     --}}
-        @csrf 
-
-            <label for="titulo">El titulo</label>
-            <br>
-        @error('fTitulo')
-
        
-            <small style="color: red;">{{$message}}</small>
-        <br>
-        <br>
-        @enderror
-            
-     
-
-        <input type="text" name="fTitulo" value="{{ old("fTitulo") }}">
-        <br>
-        <label for="body" >La descripcion</label>
-        <br>
-
-        @error('fDescripcion')
-                <small style="color: red;  ">{{$message}}</small>
-            <br>
-            <br>
-        @enderror
-
-
-       <textarea name="fDescripcion" id="" cols="30" rows="10">{{old("fDescripcion")}}</textarea>
-       <br>
+        @include('posts.form-fields')
 
         <button type="submit">Enviar</button>
-
     </form>
 
 

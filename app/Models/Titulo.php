@@ -9,7 +9,7 @@ class Titulo extends Model
 {
     use HasFactory;
 
-
+    protected $fillable = ['nombreTitulo','body'];
 
 
 

@@ -54,6 +54,9 @@ Route::get("/blog",[controladorPost::class,'index'])->name("posts.index");
 
 Route::get("/blog/create",[controladorPost::class,'create'])->name("posts.create"); 
 Route::get("/blog/{elId}",[controladorPost::class,'show'])->name("posts.show"); 
+Route::get("/blog/{elId}/editar",[controladorPost::class,'edit'])->name("posts.edit"); 
+
+Route::patch("/blog/{datos}",[controladorPost::class,'update'])->name("posts.update");//patch para actualizar y put para remplazar 
 
 
 // Post

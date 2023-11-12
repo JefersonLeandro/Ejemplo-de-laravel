@@ -45,7 +45,7 @@ class controladorPost extends Controller{
 
     public function create() {
 
-        return view("posts.create");
+        return view("posts.create", ['datos' => new Titulo]);
     }
 
     public function store(Request $request) {// utilizado para almacenar datos 
@@ -54,12 +54,6 @@ class controladorPost extends Controller{
         // return request(); ver los datos que trae la solicitud - igualmente imprimir la variable de $request
         // se puede aceder con el nombre del name solamente o con input("name");
 
-        $request->validate([
-
-            "fTitulo"=>['required', 'min:4', 'max:45'] ,  
-            "fDescripcion"=> ['required','min:20', 'max:255']
-            
-        ]);
         // ],[
 
         // para modificar un mensaje 'fTitulo.required' =>' un mensaje diferente :attribute'
@@ -67,18 +61,81 @@ class controladorPost extends Controller{
         // ]);
 
 
-        $dato = new Titulo; // eloquen 
-        $dato->nombreTitulo = $request->input("fTitulo");
-        $dato->body = $request->fDescripcion;
-        $dato->save();
+        // $dato = new Titulo; // eloquen , esta es otra opcion para crear o instaciar un nuevo dato 
+        // $dato->nombreTitulo = $request->input("fTitulo");
+        // $dato->body = $request->fDescripcion;
+        // $dato->save();
 
         // return $request->input('fTitulo'); 
         // para simplificar el codigo y de el mismo resultado con el redirect con route exite un metodo que ya hace el redirecionamiento to_route
         // return redirect()->route("posts.index"); 
+        //  Titulo::create([
+
+        //     "nombreTitulo" => $request->input("nombreTitulo"),
+        //     "body" => $request->body,
+        // ]);
+
+
+        $validated = $request->validate([
+            "nombreTitulo" => ['required', 'min:4', 'max:45'],  
+            "body" => ['required','min:20', 'max:255']
+        ]);
+        
+        Titulo::create($validated);// eloquen 
         
         session()->flash("estado","-Post creado-");// crear un mensaje o estado de una sola peticion o recargo .
 
         return to_route("posts.index");// se redirecciona a nueva ruta 
 
     }
+
+
+    public function edit( $id) {
+
+        $dato = Titulo::findOrFail($id);
+
+        return view("posts.edit", ['datos' => $dato]);;
+
+    }
+
+
+    public function update(Request $request, $id) {
+        
+        // $datos->nombreTitulo = $request->input("fTitulo");
+        // $datos->body = $request->fDescripcion;
+        // $datos->save(); 
+
+        // $datos->update([
+ 
+        //     'nombreTitulo'=> $request->input("fTitulo"),
+        //     "body"=> $request->fDescripcion,
+        // ]);
+
+
+
+        // dd($validated);
+        // dd($datos);
+        // $datos->refresh();
+
+        $validated = $request->validate([
+
+            "nombreTitulo"=>['required', 'min:4', 'max:45'] ,  
+            "body"=> ['required','min:20', 'max:255']
+        ]);
+
+
+        $datos = Titulo::findOrFail($id);// solo se busca el id para modificar los atributos que tiene por los que tiene  
+       
+        
+        $datos->update($validated); // como los datos ya estan dentro de validated no es necesario volverselos a pasar o si no seria como esta declarado antes
+
+        session()->flash("estado","-Post actilizado correctamente-");// crear un mensaje o estado de una sola peticion o recargo .
+
+        return to_route("posts.show",['elId' => $datos]);// se redirecciona a nueva ruta 
+
+
+    }
+
+
+
 }
