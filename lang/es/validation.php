@@ -27,7 +27,7 @@
         "between.string" => "El campo :attribute tiene que tener entre :min - :max caracteres.",
         "boolean" => "El campo :attribute debe tener un valor verdadero o falso.",
         "can" => "El campo :attribute contiene un valor no autorizado.",
-        "confirmed" => "La confirmación de :attribute no coincide.",
+        "confirmed" => "La confirmación de la :attribute no coincide.",
         "country" => "El campo :attribute no es un país válido.",
         "create_team" => "Crear equipo",
         "current_password" => "La contraseña es incorrecta.",
@@ -167,7 +167,10 @@
   
         'attributes'=>[//se modifica o se nombra los atributos del required
             'fTitulo'=> 'titulo',
-            'fDescripcion'=> 'descripcion'
+            'fDescripcion'=> 'descripcion',
+            'fNombrePersona'=>'nombre',
+            'fEmailPersona'=>'email',
+            'fPassword'=>'contraseña'
         ]
     
        

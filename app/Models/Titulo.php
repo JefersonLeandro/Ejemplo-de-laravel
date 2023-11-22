@@ -9,6 +9,7 @@ class Titulo extends Model
 {
     use HasFactory;
 
+    // protected $guarded = []; campos que no se le quiere asignar 
     protected $fillable = ['nombreTitulo','body'];
 
 

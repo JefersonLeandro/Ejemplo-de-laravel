@@ -10,7 +10,7 @@
         poner el title a la pagina
     </x-slot> --}}
 
-    <h1>about</h1>    
+    <h1 class="text-center text-pink-600 my-4 text-3xl ">About</h1>    
 
 </x-layout>
 

@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\Auth\RegistredUserController;
+use App\Http\Controllers\AuthenticatedSessionController;
 use App\Http\Controllers\controladorPost;
+
 use Faker\Guesser\Name;
 use Illuminate\Support\Facades\Route;
 
@@ -38,26 +41,42 @@ use Illuminate\Support\Facades\Route;
 
 
 //Rutas 
-Route::view("/","welcome")->name("welcome");
-
-
-
 
 // Route::get("nombre url cualquiera o igual ",[nombreControlador,'nombre del metodo a utlizar'])->name("nombre de toda la ruta");
 // Route::view("/blog","blog",["posts"=>$posts])->name("blog");
 
+// Route::get("/miLogin",[function () {
 
-Route::view("/contact","contact")->name("contact");
-Route::view("/acercaDe","about")->name("about");
-Route::get("/blog",[controladorPost::class,'index'])->name("posts.index");
+//     return " pagina login";
+// }])->name("login");
+
 // el metodo show es para mostrar los detalles de algo miestran el index es para mostrar un listado
 
-Route::get("/blog/create",[controladorPost::class,'create'])->name("posts.create"); 
-Route::get("/blog/{elId}",[controladorPost::class,'show'])->name("posts.show"); 
-Route::get("/blog/{elId}/editar",[controladorPost::class,'edit'])->name("posts.edit"); 
+Route::view("/","welcome")->name("welcome");
+Route::view("/contact","contact")->name("contact");
+Route::view("/acercaDe","about")->name("about");
+Route::view("/irABootstrap","bootstrap")->name("bootstrap");
+// 7 metodos rest 
+// Route::get("/blog",[controladorPost::class,'index'])->name("posts.index");// mostrar el listado de posts
+// Route::get("/blog/{dato}",[controladorPost::class,'show'])->name("posts.show");  // mostrar los detalles de un post
+// Route::get("/blog/create",[controladorPost::class,'create'])->name("posts.create");// mostrar y crear un post dentro de formulario
+// Route::post("/blog",[controladorPost::class,'store'])->name("posts.store"); // para almacenar valores o datos en la base de datos
+// Route::get("/blog/{dato}/editar",[controladorPost::class,'edit'])->name("posts.edit");//mostrar y editar el formulario 
+// Route::patch("/blog/{dato}",[controladorPost::class,'update'])->name("posts.update");//actualizar los datos en bd, patch para actualizar y put para remplazar 
+// Route::delete("/blog/{dato}",[controladorPost::class,'destroy'])->name("posts.destroy"); // para eliminar un post
 
-Route::patch("/blog/{datos}",[controladorPost::class,'update'])->name("posts.update");//patch para actualizar y put para remplazar 
+//routes for the login or sessions
+Route::view("/registro" ,"auth.registro" )->name("auth.registro");//ir al registro
+Route::Post("/registrar" ,[RegistredUserController::class,'store'] )->name("auth.registrar");//registrar datos dentro del metodo store      
 
+Route::view("/login" ,"auth.login" )->name("auth.login");//ir al login
+Route::Post("/login" ,[AuthenticatedSessionController::class,'store'] )->name("login");//registrar datos dentro del metodo store      
+
+Route::Post("/logout" ,[AuthenticatedSessionController::class,'destroy'] )->name("logout");//cerrar session
+
+Route::resource('blog', controladorPost::class,[
+    'names'=> 'posts',// al estar los names en blog de la url se le espefican que seran posts
+    'parameters' => ['blog' => 'dato'] // igualmente los parametros se cambia
+]);
 
 // Post
-Route::post("/blog",[controladorPost::class,'store'])->name("posts.store"); // el metodo store es para almacenar valores o datos

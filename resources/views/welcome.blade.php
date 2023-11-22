@@ -40,7 +40,24 @@
         poner el title a la pagina
     </x-slot> --}}
 
-    <h1>welcome</h1>    
+    <h1 class="text-center text-pink-600 my-4 text-3xl  ">Welcome</h1>    
+    @auth
+    {{-- {{Auth::user()}} muestra todos los datos del usuario --}}
+        <div class=" container max-width: 640px;">
+            
+            <pre>
+                
+                <strong>Usuario autenticado : </strong>{{Auth::user()->name}}
+            </pre>
+        </div>
+    @endauth
+
+
+
+
+
+
+
 
 </x-layout>
 
